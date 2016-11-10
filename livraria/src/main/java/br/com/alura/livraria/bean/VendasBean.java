@@ -5,27 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
 import br.com.alura.alura_lib.dao.DAO;
+import br.com.alura.alura_lib.jsf.annotation.ViewModel;
 import br.com.alura.livraria.modelo.Livro;
 import br.com.alura.livraria.modelo.Venda;
 
-@Named
-@ViewScoped
+@ViewModel
 public class VendasBean implements Serializable{
 
 
 	private static final long serialVersionUID = 1L;
-	private DAO<Livro> livroDao;
+	private DAO<Livro,Integer> livroDao;
 
 	@Inject
-	public VendasBean(DAO<Livro> livroDao){
+	public VendasBean(DAO<Livro,Integer> livroDao){
 		this.livroDao = livroDao;
 	}
 	

@@ -3,10 +3,9 @@ package br.com.alura.livraria.bean;
 import java.io.Serializable;
 import java.util.Map;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.alura.alura_lib.helper.MessageHelper;
 import br.com.alura.alura_lib.jsf.annotation.ScopeMap;
@@ -14,8 +13,7 @@ import br.com.alura.alura_lib.jsf.annotation.ScopeMap.Scope;
 import br.com.alura.livraria.dao.UsuarioDao;
 import br.com.alura.livraria.modelo.Usuario;
 
-@Named
-@RequestScoped
+@Model
 public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;

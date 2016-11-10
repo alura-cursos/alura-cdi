@@ -8,18 +8,16 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.alura.alura_lib.dao.DAO;
 import br.com.alura.alura_lib.helper.MessageHelper;
+import br.com.alura.alura_lib.jsf.annotation.ViewModel;
 import br.com.alura.alura_lib.tx.annotation.Transacional;
 import br.com.alura.livraria.modelo.Autor;
 import br.com.alura.livraria.modelo.Livro;
 
-@Named
-@ViewScoped
+@ViewModel
 public class LivroBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -30,15 +28,15 @@ public class LivroBean implements Serializable {
 
 	private List<Livro> livros;
 
-	private DAO<Autor> autorDao;
+	private DAO<Autor,Integer> autorDao;
 
-	private DAO<Livro> livroDao;
+	private DAO<Livro,Integer> livroDao;
 
 	private MessageHelper helper;
 
 
 	@Inject
-	public LivroBean(DAO<Livro> livroDao, DAO<Autor> autorDao, MessageHelper helper){
+	public LivroBean(DAO<Livro,Integer> livroDao, DAO<Autor,Integer> autorDao, MessageHelper helper){
 		this.livroDao = livroDao;
 		this.autorDao = autorDao;
 		this.helper = helper;
