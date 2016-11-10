@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.model.chart.BarChartModel;
@@ -23,6 +24,7 @@ public class VendasBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private DAO<Livro> livroDao;
 
+	@Inject
 	public VendasBean(DAO<Livro> livroDao){
 		this.livroDao = livroDao;
 	}

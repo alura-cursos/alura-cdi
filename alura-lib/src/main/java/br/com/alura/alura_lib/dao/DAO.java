@@ -6,15 +6,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
-public class DAO<T> implements Serializable{
-
+public class DAO<T> implements Serializable {
 
 	private static final long serialVersionUID = -1603139969274284275L;
-	
+
 	private final Class<T> classe;
 
 	private EntityManager em;
-
 
 	public DAO(Class<T> classe, EntityManager em) {
 		this.classe = classe;
@@ -23,31 +21,25 @@ public class DAO<T> implements Serializable{
 
 	public void adiciona(T t) {
 		
-
-		// abre transacao
-		em.getTransaction().begin();
-
+		
 		// persiste o objeto
 		em.persist(t);
 
-		// commita a transacao
-		em.getTransaction().commit();
 	}
 
 	public void remove(T t) {
-		em.getTransaction().begin();
-
+		
 		em.remove(em.merge(t));
-
-		em.getTransaction().commit();
+		
+		
 	}
 
 	public void atualiza(T t) {
-		em.getTransaction().begin();
 
+		
 		em.merge(t);
-
-		em.getTransaction().commit();
+		
+		
 	}
 
 	public List<T> listaTodos() {
@@ -65,8 +57,7 @@ public class DAO<T> implements Serializable{
 	}
 
 	public int contaTodos() {
-		long result = (Long) em.createQuery("select count(n) from livro n")
-				.getSingleResult();
+		long result = (Long) em.createQuery("select count(n) from livro n").getSingleResult();
 
 		return (int) result;
 	}
@@ -75,8 +66,7 @@ public class DAO<T> implements Serializable{
 		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
 		query.select(query.from(classe));
 
-		List<T> lista = em.createQuery(query).setFirstResult(firstResult)
-				.setMaxResults(maxResults).getResultList();
+		List<T> lista = em.createQuery(query).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
 
 		return lista;
 	}

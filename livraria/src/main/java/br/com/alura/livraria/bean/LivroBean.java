@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.alura.alura_lib.dao.DAO;
+import br.com.alura.alura_lib.tx.annotation.Transacional;
 import br.com.alura.livraria.modelo.Autor;
 import br.com.alura.livraria.modelo.Livro;
 
@@ -75,6 +76,7 @@ public class LivroBean implements Serializable {
 		System.out.println("Escrito por: " + autor.getNome());
 	}
 
+	@Transacional
 	public void gravar() {
 		System.out.println("Gravando livro " + this.livro.getTitulo());
 
@@ -95,6 +97,7 @@ public class LivroBean implements Serializable {
 		this.livro = new Livro();
 	}
 
+	@Transacional
 	public void remover(Livro livro) {
 		System.out.println("Removendo livro");
 		livroDao.remove(livro);
