@@ -24,7 +24,6 @@ public class LoginBean implements Serializable {
 
 	private UsuarioDao usuarioDao;
 
-
 	private MessageHelper helper;
 
 	private Map<String, Object> sessionMap;

@@ -4,6 +4,10 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
        version="1.2" bean-discovery-mode="all">
 
+<!-- 	<alternatives> -->
+<!-- 		<class>br.com.alura.livraria.tx.MeuGerenciadorDeTransacao</class> -->
+<!-- 	</alternatives> -->
+
     <interceptors>
     	<class>br.com.alura.alura_lib.tx.GerenciadorDeTransacao</class>
     </interceptors>
